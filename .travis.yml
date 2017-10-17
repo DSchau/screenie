@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - stable
+
+cache:
+  yarn: true
+
+script: yarn test
+
+before_deploy:
+  - yarn deploy
+  - cd dist
+deploy:
+  provider: npm
+  email: dustinschau@gmail.com
+  api_key: $NPM_API_KEY
+  skip_cleanup: true
+  on:
+    tags: true
+after_deploy:
+  - cd ../
