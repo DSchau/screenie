@@ -13,7 +13,7 @@ const { screenie } = require('screenie');
 const path = require('path');
 
 (async () => {
-  await screenie({
+  const screenshots = await screenie({
     folder: path.join(process.cwd(), 'screenshots'),
     url: 'https://example.com'
   });

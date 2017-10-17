@@ -26,13 +26,17 @@ export async function screenie(options: ScreenieOptions) {
     ...(options.viewport || {})
   });
 
+  let screenshots = [];
   let screenshot;
   let index = 0;
   while (true) {
+    const filePath = path.join(options.folder, `${index}.png`);
     const newScreenshot = await takeScreenshot(page, path.join(options.folder, `${index}.png`));
     if (screenshot && screenshot.equals(newScreenshot)) {
       await fs.remove(path.join(options.folder, `${index}.png`));
       break;
+    } else {
+      screenshots.push(filePath);
     }
 
     await sleep(options.delay);
@@ -43,4 +47,5 @@ export async function screenie(options: ScreenieOptions) {
     screenshot = newScreenshot;
   }
   await browser.close();
+  return screenshots;
 }
