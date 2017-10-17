@@ -1,4 +1,5 @@
 export interface ScreenieOptions {
+  delay?: number;
   folder: string;
   url: string;
   viewport?: {

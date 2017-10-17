@@ -20,7 +20,7 @@ export async function screenie(options: ScreenieOptions) {
 
   await fs.mkdirp(options.folder);
 
-  await page.goto('https://dschau.github.io/css-in-js-presentation');
+  await page.goto(options.url);
   await page.setViewport({
     ...defaults.viewport,
     ...(options.viewport || {})
@@ -34,9 +34,9 @@ export async function screenie(options: ScreenieOptions) {
       break;
     }
 
-    await sleep(2500);
+    await sleep(options.delay);
     await page.keyboard.down('ArrowRight');
-    await sleep(2500);
+    await sleep(options.delay);
 
     index += 1;
     screenshot = newScreenshot;
