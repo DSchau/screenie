@@ -29,8 +29,9 @@ export async function screenie(options: ScreenieOptions) {
   let screenshot;
   let index = 0;
   while (true) {
-    const newScreenshot = takeScreenshot(page, path.join(options.folder, `${index}.png`));
-    if (screenshot === newScreenshot) {
+    const newScreenshot = await takeScreenshot(page, path.join(options.folder, `${index}.png`));
+    if (screenshot && screenshot.equals(newScreenshot)) {
+      await fs.remove(path.join(options.folder, `${index}.png`));
       break;
     }
 
