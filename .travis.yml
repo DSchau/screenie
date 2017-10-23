@@ -5,11 +5,10 @@ node_js:
 cache:
   yarn: true
 
-script: yarn test
+before_script: yarn global add lerna
+script: lerna run test
 
-before_deploy:
-  - yarn deploy
-  - cd dist
+before_deploy: lerna publish
 deploy:
   provider: npm
   email: dustinschau@gmail.com
@@ -17,5 +16,3 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-after_deploy:
-  - cd ../
