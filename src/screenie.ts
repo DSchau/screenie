@@ -40,7 +40,7 @@ export async function screenie(options: ScreenieOptions) {
     }
 
     await sleep(options.delay);
-    await page.keyboard.down('ArrowRight');
+    await page.keyboard.down(' ');
     await sleep(options.delay);
 
     index += 1;
