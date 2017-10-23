@@ -5,11 +5,12 @@ import * as fs from 'fs-extra';
 import { ScreenieOptions } from './interfaces';
 
 const takeScreenshot = (page, file) => page.screenshot({ path: file }, { waitUntil: 'networkidle' });
+const sleep = (duration = 1000) => new Promise(resolve => setTimeout(resolve, 1000));
 
 const defaults = {
   viewport: {
-    width: 800,
-    height: 450
+    width: 1400,
+    height: 800
   }
 };
 
@@ -38,9 +39,9 @@ export async function screenie(options: ScreenieOptions) {
       screenshots.push(filePath);
     }
 
-    await page.waitFor(options.delay);
-    await page.keyboard.down('ArrowRight');
-    await page.waitFor(options.delay);
+    await sleep(options.delay);
+    await page.keyboard.down(' ');
+    await sleep(options.delay);
 
     index += 1;
     screenshot = newScreenshot;
