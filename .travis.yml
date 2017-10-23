@@ -5,7 +5,9 @@ node_js:
 cache:
   yarn: true
 
-before_script: yarn global add lerna
+before_script:
+  - yarn global add lerna
+  - lerna bootstrap
 script: lerna run test
 
 before_deploy: lerna publish
