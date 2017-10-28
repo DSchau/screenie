@@ -20,7 +20,7 @@ export async function screenie(options: ScreenieOptions) {
 
   await fs.mkdirp(options.folder);
 
-  await page.goto(options.url, { waitUntil: 'networkidle' });
+  await (page.goto as any)(options.url, { waitUntil: ['domcontentloaded', 'networkidle0'] });
   await page.setViewport({
     ...defaults.viewport,
     ...(options.viewport || {})

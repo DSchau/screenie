@@ -19,9 +19,9 @@
   version "8.0.41"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.41.tgz#b88d23b454fdbcfd170f61de88a33ec9cd98960a"
 
-"@types/puppeteer@~0.10.3":
-  version "0.10.3"
-  resolved "https://registry.yarnpkg.com/@types/puppeteer/-/puppeteer-0.10.3.tgz#79b6f037d6f0aef2b7a378fe3a495ea7bc03b681"
+"@types/puppeteer@~0.12.1":
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/@types/puppeteer/-/puppeteer-0.12.1.tgz#a2b3f0e7b624faad2d5948bda07fccc859633415"
   dependencies:
     "@types/node" "*"
 
