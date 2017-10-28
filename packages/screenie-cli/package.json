@@ -1,7 +1,7 @@
 {
   "name": "@screenie/screenie-cli",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.0.1-0",
+  "main": "dist/index.js",
   "author": "Dustin Schau <dustin.schau@objectpartners.com> (https://dustinschau.com)",
   "license": "MIT",
   "scripts": {
@@ -22,9 +22,9 @@
     "typescript": "~2.5.3"
   },
   "dependencies": {
+    "@screenie/screenie": "~1.0.0",
     "chalk": "~2.2.0",
-    "commander": "~2.11.0",
-    "@screenie/screenie": "~1.0.0"
+    "commander": "~2.11.0"
   },
   "publishConfig": {
     "access": "public"
