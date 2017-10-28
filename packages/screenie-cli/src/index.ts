@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import * as program from 'commander';
 import chalk from 'chalk';
-import { screenie } from 'screenie';
+import { screenie } from '@screenie/screenie';
 import * as path from 'path';
 
 const { version } = require(path.join(__dirname, '../package.json'));
