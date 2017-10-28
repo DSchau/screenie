@@ -22,21 +22,24 @@ export async function screenie(options: ScreenieOptions) {
   });
 
   let screenshots = [];
+  let html;
   let hash = -1;
   while (true) {
     const updatedHash = await page.evaluate(() => location.href.split('/').pop() || 0);
-    if (hash === updatedHash) {
+    const updatedHtml = await page.evaluate(() => document.body.innerHTML);
+    if (hash === updatedHash && html === updatedHtml) {
       break;
     } else {
       hash = updatedHash;
+      html = updatedHtml;
     }
     const filePath = path.join(opts.folder, `${hash}.png`);
     await page.waitFor(opts.delay);
-    const screenshot = await takeScreenshot(page, path.join(opts.folder, `${hash}.png`));
+    const updatedScreenshot = await takeScreenshot(page, path.join(opts.folder, `${hash}.png`));
 
     await page.keyboard.down(' ');
 
-    screenshots.push(screenshot);
+    screenshots.push(updatedScreenshot);
   }
   await browser.close();
   return screenshots;
