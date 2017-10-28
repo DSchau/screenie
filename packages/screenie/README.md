@@ -6,12 +6,14 @@ A simple tool to leverage puppeteer to take screenshots of web pages; is particu
 
 ## Install
 
-__Not yet released on NPM__
+```bash
+yarn add @screenie/screenie
+```
 
 ## Usage
 
 ```javascript
-const { screenie } = require('screenie');
+const { screenie } = require('@screenie/screenie');
 const path = require('path');
 
 (async () => {

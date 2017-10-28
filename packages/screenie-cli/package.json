@@ -5,7 +5,8 @@
     "screenie": "dist/index.js",
     "screenie-cli": "dist/index.js"
   },
-  "author": "Dustin Schau <dustin.schau@objectpartners.com> (https://dustinschau.com)",
+  "author": "Dustin Schau <dustin.schau@gmail.com> (https://dustinschau.com)",
+  "repository": "https://github.com/DSchau/screenie/tree/master/packages/screenie-cli",
   "license": "MIT",
   "scripts": {
     "prebuild": "npm run clean",
@@ -26,7 +27,7 @@
     "typescript": "~2.5.3"
   },
   "dependencies": {
-    "@screenie/screenie": "*",
+    "@screenie/screenie": ">=0.0.0",
     "chalk": "~2.2.0",
     "commander": "~2.11.0"
   },
