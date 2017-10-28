@@ -9,12 +9,3 @@ before_script:
   - yarn global add lerna
   - lerna bootstrap
 script: lerna run test
-
-before_deploy: lerna publish
-deploy:
-  provider: npm
-  email: dustinschau@gmail.com
-  api_key: $NPM_API_KEY
-  skip_cleanup: true
-  on:
-    tags: true

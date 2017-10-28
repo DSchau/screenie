@@ -1,7 +1,10 @@
 {
   "name": "@screenie/screenie-cli",
   "version": "0.0.1-0",
-  "main": "dist/index.js",
+  "bin": {
+    "screenie": "dist/index.js",
+    "screenie-cli": "dist/index.js"
+  },
   "author": "Dustin Schau <dustin.schau@objectpartners.com> (https://dustinschau.com)",
   "license": "MIT",
   "scripts": {
