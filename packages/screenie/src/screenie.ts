@@ -24,11 +24,13 @@ export async function screenie(options: ScreenieOptions) {
   let screenshots = [];
   let hash = -1;
   while (true) {
-    const filePath = path.join(opts.folder, `${hash}.png`);
     const updatedHash = await page.evaluate(() => location.href.split('/').pop() || 0);
     if (hash === updatedHash) {
       break;
+    } else {
+      hash = updatedHash;
     }
+    const filePath = path.join(opts.folder, `${hash}.png`);
     await page.waitFor(opts.delay);
     const screenshot = await takeScreenshot(page, path.join(opts.folder, `${hash}.png`));
 
