@@ -11,6 +11,7 @@
     "copy": "cp .gitignore .npmignore README.md dist",
     "predeploy": "npm run build && npm run copy",
     "deploy": "bump-version",
+    "prepublishOnly": "npm run build",
     "start": "npm run build && node dist/index.js",
     "test": "jest"
   },

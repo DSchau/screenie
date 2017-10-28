@@ -11,6 +11,7 @@
     "prebuild": "npm run clean",
     "build": "tsc",
     "clean": "del-cli 'dist/**/*'",
+    "prepublishOnly": "npm run build",
     "test": "jest"
   },
   "devDependencies": {
