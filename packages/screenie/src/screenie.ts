@@ -5,7 +5,7 @@ import * as fs from 'fs-extra';
 import { ScreenieOptions } from './interfaces';
 
 const takeScreenshot = (page, file) => page.screenshot({ path: file }, { waitUntil: 'networkidle' });
-const sleep = (duration = 1000) => new Promise(resolve => setTimeout(resolve, 1000));
+const sleep = (duration = 1000) => new Promise(resolve => setTimeout(resolve, duration));
 
 const defaults = {
   viewport: {
