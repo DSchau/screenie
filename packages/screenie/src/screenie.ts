@@ -4,7 +4,7 @@ import * as fs from 'fs-extra';
 
 import { ScreenieOptions } from './interfaces';
 
-const takeScreenshot = (page, file) => page.screenshot({ path: file }, { waitUntil: 'networkidle' });
+const takeScreenshot = (page, file) => page.screenshot({ path: file });
 const sleep = (duration = 1000) => new Promise(resolve => setTimeout(resolve, duration));
 
 const defaults = {
@@ -20,7 +20,7 @@ export async function screenie(options: ScreenieOptions) {
 
   await fs.mkdirp(options.folder);
 
-  await page.goto(options.url);
+  await page.goto(options.url, { waitUntil: 'networkidle' });
   await page.setViewport({
     ...defaults.viewport,
     ...(options.viewport || {})
