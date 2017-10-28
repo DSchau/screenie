@@ -1,6 +1,6 @@
 {
   "name": "@screenie/screenie-cli",
-  "version": "0.0.1-4",
+  "version": "0.0.1-5",
   "bin": {
     "screenie": "dist/index.js",
     "screenie-cli": "dist/index.js"
