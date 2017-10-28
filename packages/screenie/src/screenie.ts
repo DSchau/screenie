@@ -9,8 +9,8 @@ const sleep = (duration = 1000) => new Promise(resolve => setTimeout(resolve, 10
 
 const defaults = {
   viewport: {
-    width: 1400,
-    height: 800
+    width: 800,
+    height: 450
   }
 };
 
