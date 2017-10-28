@@ -5,7 +5,6 @@ import * as fs from 'fs-extra';
 import { ScreenieOptions } from './interfaces';
 
 const takeScreenshot = (page, file) => page.screenshot({ path: file });
-const sleep = (duration = 1000) => new Promise(resolve => setTimeout(resolve, duration));
 
 const defaults = {
   viewport: {
@@ -20,7 +19,7 @@ export async function screenie(options: ScreenieOptions) {
 
   await fs.mkdirp(options.folder);
 
-  await (page.goto as any)(options.url, { waitUntil: ['domcontentloaded', 'networkidle0'] });
+  await page.goto(options.url, { waitUntil: ['domcontentloaded', 'networkidle0'] });
   await page.setViewport({
     ...defaults.viewport,
     ...(options.viewport || {})
@@ -31,6 +30,7 @@ export async function screenie(options: ScreenieOptions) {
   let index = 0;
   while (true) {
     const filePath = path.join(options.folder, `${index}.png`);
+    await page.waitFor(options.delay);
     const newScreenshot = await takeScreenshot(page, path.join(options.folder, `${index}.png`));
     if (screenshot && screenshot.equals(newScreenshot)) {
       await fs.remove(path.join(options.folder, `${index}.png`));
@@ -39,9 +39,9 @@ export async function screenie(options: ScreenieOptions) {
       screenshots.push(filePath);
     }
 
-    await sleep(options.delay);
+    await page.waitFor(options.delay);
     await page.keyboard.down(' ');
-    await sleep(options.delay);
+    await page.waitFor(options.delay);
 
     index += 1;
     screenshot = newScreenshot;
