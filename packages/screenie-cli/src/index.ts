@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import * as program from 'commander';
 import chalk from 'chalk';
 import { screenie } from 'screenie';
