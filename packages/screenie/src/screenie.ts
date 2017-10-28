@@ -23,7 +23,8 @@ export async function screenie(options: ScreenieOptions) {
 
   let screenshots = [];
   let html;
-  let hash = -1;
+  let hash = '';
+  let id = 1;
   while (true) {
     const updatedHash = await page.evaluate(() => location.href.split('/').pop() || 0);
     const updatedHtml = await page.evaluate(() => document.body.innerHTML);
@@ -32,10 +33,12 @@ export async function screenie(options: ScreenieOptions) {
     } else {
       hash = updatedHash;
       html = updatedHtml;
+      id += 1;
     }
-    const filePath = path.join(opts.folder, `${hash}.png`);
+    const name = `${(opts.prependNumber ? `${id}-` : '') + hash}.png`;
+    const filePath = path.join(opts.folder, name);
     await page.waitFor(opts.delay);
-    const updatedScreenshot = await takeScreenshot(page, path.join(opts.folder, `${hash}.png`));
+    const updatedScreenshot = await takeScreenshot(page, path.join(opts.folder, name));
 
     await page.keyboard.down(' ');
 
