@@ -22,23 +22,19 @@ export async function screenie(options: ScreenieOptions) {
   });
 
   let screenshots = [];
-  let screenshot;
-  let index = 0;
+  let hash = -1;
   while (true) {
-    const filePath = path.join(opts.folder, `${index}.png`);
-    await page.waitFor(opts.delay);
-    const newScreenshot = await takeScreenshot(page, path.join(opts.folder, `${index}.png`));
-    if (screenshot && screenshot.equals(newScreenshot)) {
-      await fs.remove(path.join(opts.folder, `${index}.png`));
+    const filePath = path.join(opts.folder, `${hash}.png`);
+    const updatedHash = await page.evaluate(() => location.href.split('/').pop() || 0);
+    if (hash === updatedHash) {
       break;
-    } else {
-      screenshots.push(filePath);
     }
+    await page.waitFor(opts.delay);
+    const screenshot = await takeScreenshot(page, path.join(opts.folder, `${hash}.png`));
 
     await page.keyboard.down(' ');
 
-    index += 1;
-    screenshot = newScreenshot;
+    screenshots.push(screenshot);
   }
   await browser.close();
   return screenshots;
