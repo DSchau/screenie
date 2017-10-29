@@ -3,10 +3,11 @@ import * as path from 'path';
 const getName = (url, fallbackName = 'screenshot') => {
   const expr = /(?:http|https)(?::\/\/)(.*)/;
   const match = url.match(expr);
+  let name = fallbackName;
   if (expr) {
-    return match.pop().split('.').slice(0, -1).join('.');
+    name = match.pop().split('.').slice(0, -1).join('.');
   }
-  return fallbackName;
+  return `${name}.png`;
 };
 
 export async function screenieAdapterDefault({
