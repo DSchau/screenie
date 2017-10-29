@@ -1,4 +1,5 @@
 export interface ScreenieOptions {
+  adapter?: string;
   delay?: number;
   folder: string;
   url: string;

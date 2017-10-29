@@ -8,6 +8,8 @@ const { version } = require(path.join(__dirname, '../package.json'));
 
 program.version(version)
   .option('-u, --url <url>', 'The URL to scrape for screenshots')
+  .option('-a, --adapter <adapter>', 'The adapter to run for screenshots')
+  .option('-f, --folder <folder>', 'The folder to save the resulting screenshots (does not have to exist, will be created)')
   .option('-f, --folder <folder>', 'The folder to save the resulting screenshots (does not have to exist, will be created)')
   .option('-p, --prepend [prepend]', 'Prepend each screenshot with a unique number', parseInt)
   .option('-d, --delay [delay]', 'A delay when taking each screenshot', parseInt)
@@ -29,7 +31,8 @@ program.version(version)
       }
     } : {})
   })
-    .then(() => {
-      console.log(chalk.green.bold(`Screenshots saved to ${folder}`));
+    .then(screenshots => {
+      const len = screenshots.length;
+      console.log(chalk.green.bold(`(${len}) Screenshot${len === 1 ? '' : 's'} saved to ${folder}`));
     });
 })();
