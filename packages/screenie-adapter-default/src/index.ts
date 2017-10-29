@@ -16,11 +16,6 @@ export async function screenieAdapterDefault({
 }, options) {
   const screenshotPath = path.join(options.folder, getName(options.url));
   await page.waitFor(options.delay);
-  await page.setViewport({
-      width: options.width,
-      height: options.height,
-      isMobile: true
-  });
   await page.screenshot({
     path: screenshotPath
   });

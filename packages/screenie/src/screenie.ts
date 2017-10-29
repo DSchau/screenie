@@ -34,8 +34,10 @@ export async function screenie(opts: ScreenieOptions) {
 
   await page.goto(options.url, { waitUntil: ['domcontentloaded', 'networkidle0'] });
   await page.setViewport({
-    ...options.viewport,
-    ...(options.viewport || {})
+    height: options.height,
+    width: options.width,
+    isMobile: options.isMobile,
+    landscape: options.isLandscape
   });
 
   const adapter = getAdapter(options.adapter);

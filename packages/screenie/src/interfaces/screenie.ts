@@ -4,12 +4,10 @@ export interface ScreenieOptions {
   folder: string;
   url: string;
   prependNumber?: boolean;
-  viewport?: {
-    width?: number;
-    height?: number;
-    deviceScaleFactor?: number;
-    isMobile?: boolean;
-    hasTouch?: boolean;
-    isLandscape?: boolean;
-  }
+  width?: number;
+  height?: number;
+  deviceScaleFactor?: number;
+  isMobile?: boolean;
+  hasTouch?: boolean;
+  isLandscape?: boolean;
 }
