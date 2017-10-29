@@ -3,7 +3,7 @@
   "version": "0.0.1-6",
   "main": "dist/index.js",
   "author": "Dustin Schau <dustinschau@gmail.com> (https://dustinschau.com)",
-  "repository": "https://github.com/DSchau/screenie/tree/master/packages/screenie-adpater-default",
+  "repository": "https://github.com/DSchau/screenie/tree/master/packages/screenie-adapter-spectacle",
   "license": "MIT",
   "scripts": {
     "prebuild": "npm run clean",
