@@ -1,6 +1,7 @@
 import * as puppeteer from 'puppeteer';
 import * as path from 'path';
 import * as fs from 'fs-extra';
+import * as camelCase from 'lodash.camelcase';
 
 import { defaults } from './defaults';
 
@@ -10,10 +11,11 @@ const takeScreenshot = (page, file) => page.screenshot({ path: file });
 const getAdapter = (adapter): Function => {
   try {
     let fn = require(`@screenie/${adapter}`);
+    const camel = camelCase(adapter);
     if (fn.default) {
       return fn.default;
-    } else if (fn[adapter]) {
-      return fn[adapter];
+    } else if (fn[camel]) {
+      return fn[camel];
     } else {
       return fn;
     }
