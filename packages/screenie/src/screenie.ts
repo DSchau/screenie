@@ -9,7 +9,7 @@ import { ScreenieOptions } from './interfaces';
 const takeScreenshot = (page, file) => page.screenshot({ path: file });
 const getAdapter = (adapter): Function => {
   try {
-    let fn = require(adapter)
+    let fn = require(`@screenie/${adapter}`);
     if (fn.default) {
       return fn.default;
     } else if (fn[adapter]) {
