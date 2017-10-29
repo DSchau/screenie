@@ -21,7 +21,9 @@ export async function screenieAdapterSpectacle({
     const name = `${(options.prependNumber ? `${id}-` : '') + hash}.png`;
     const filePath = path.join(options.folder, name);
     await page.waitFor(options.delay);
-    const updatedScreenshot = await page.screenshot(page, path.join(options.folder, name));
+    const updatedScreenshot = await page.screenshot({
+      path: path.join(options.folder, name)
+    });
 
     await page.keyboard.down(' ');
 

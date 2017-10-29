@@ -14,7 +14,9 @@ export async function screenieAdapterDefault({
   page
 }, options) {
   const screenshotPath = path.join(options.folder, getName(options.url));
-  await page.screenshot(page, screenshotPath);
+  await page.screenshot({
+    path: screenshotPath
+  });
 
   return [screenshotPath];
 }
