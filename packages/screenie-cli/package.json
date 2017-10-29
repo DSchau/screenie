@@ -27,7 +27,7 @@
     "typescript": "~2.5.3"
   },
   "dependencies": {
-    "@screenie/screenie": "0.0.1-12",
+    "@screenie/screenie": "~0.0.1-13",
     "chalk": "~2.2.0",
     "commander": "~2.11.0"
   },
