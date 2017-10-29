@@ -39,10 +39,8 @@ test('it can customize the dimensions', async () => {
   const width = height;
   await screenie({
     ...options,
-    viewport: {
-      height,
-      width
-    }
+    height,
+    width
   });
 
   const { height: fileHeight, width: fileWidth } = await promisify(imageSize)(path.join(options.folder, '0.png'));
