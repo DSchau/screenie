@@ -1,5 +1,13 @@
 import * as path from 'path';
 
+const zeroPad = (num: Number) => {
+  const str = num.toString();
+  if (str.length === 1) {
+    return `0${str}`;
+  }
+  return str;
+};
+
 const removeProgress = () => {
   const root = document.querySelector('[data-reactroot]');
   Array.from(root.children)
@@ -29,7 +37,7 @@ export async function screenieAdapterSpectacle({
       html = updatedHtml;
       id += 1;
     }
-    const name = `${id}-${hash}.png`;
+    const name = `${zeroPad(id)}-${hash}.png`;
     const filePath = path.join(options.folder, name);
     await page.waitFor(options.delay);
     const updatedScreenshot = await page.screenshot({
