@@ -1,5 +1,15 @@
 import * as path from 'path';
 
+const removeProgress = () => {
+  const root = document.querySelector('[data-reactroot]');
+  Array.from(root.children)
+    .forEach((child: HTMLElement) => {
+     if (child.style.height === '10px') {
+      child.remove();
+     }
+  });
+};
+
 export async function screenieAdapterSpectacle({
   browser,
   page
@@ -8,6 +18,7 @@ export async function screenieAdapterSpectacle({
   let html;
   let hash = '';
   let id = 0;
+  await page.evaluate(removeProgress);
   while (true) {
     const updatedHash = await page.evaluate(() => location.href.split('/').pop() || 0);
     const updatedHtml = await page.evaluate(() => document.body.innerHTML);
