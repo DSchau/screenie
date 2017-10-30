@@ -7,7 +7,7 @@ export async function screenieAdapterSpectacle({
   let screenshots = [];
   let html;
   let hash = '';
-  let id = 1;
+  let id = 0;
   while (true) {
     const updatedHash = await page.evaluate(() => location.href.split('/').pop() || 0);
     const updatedHtml = await page.evaluate(() => document.body.innerHTML);
@@ -18,7 +18,7 @@ export async function screenieAdapterSpectacle({
       html = updatedHtml;
       id += 1;
     }
-    const name = `${(options.prependNumber ? `${id}-` : '') + hash}.png`;
+    const name = `${id}-${hash}.png`;
     const filePath = path.join(options.folder, name);
     await page.waitFor(options.delay);
     const updatedScreenshot = await page.screenshot({
