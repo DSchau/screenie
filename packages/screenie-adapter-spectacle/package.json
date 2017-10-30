@@ -1,6 +1,6 @@
 {
   "name": "@screenie/screenie-adapter-spectacle",
-  "version": "0.0.1-6",
+  "version": "0.0.1-7",
   "main": "dist/index.js",
   "author": "Dustin Schau <dustinschau@gmail.com> (https://dustinschau.com)",
   "repository": "https://github.com/DSchau/screenie/tree/master/packages/screenie-adapter-spectacle",
