@@ -33,11 +33,11 @@ export async function screenieAdapterSpectacle({
     if (hash === updatedHash && html === updatedHtml) {
       break;
     } else {
-      hash = updatedHash;
-      html = updatedHtml;
       if (hash !== updatedHash) {
         id += 1;
       }
+      hash = updatedHash;
+      html = updatedHtml;
     }
     const name = `${zeroPad(id)}-${hash}.png`;
     const filePath = path.join(options.folder, name);
