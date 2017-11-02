@@ -1,8 +1,13 @@
+
 # screenie
 
 A simple lerna repo encapsulating "screenshot" functionality.
 
 ## packages
 
-- [screenie](./packages/screenie) - The foundational package; uses Puppeteer to crawl a page and take screenshots
-- [screenie-cli](./packages/screenie-cli) - Uses screenie and exposes a CLI to encapsulate functionality
+<!-- AUTO-GENERATED-CONTENT:START (PACKAGES) -->
+- [screenie](./packages/screenie) A simple tool to leverage puppeteer to take screenshots of web pages; is particularly tailored to take screenshots of individual slides in a presentation (e.g. within Spectacle)
+- [screenie-adapter-default](./packages/screenie-adapter-default) An adapter for screenie to take a simple screenshot of a single webpage.
+- [screenie-adapter-spectacle](./packages/screenie-adapter-spectacle) An adapter to take screenshots of each slide in a spectacle presentation
+- [screenie-cli](./packages/screenie-cli) A simple tool to leverage puppeteer to take screenshots of web pages; is particularly tailored to take screenshots of individual slides in a presentation (e.g. within Spectacle)
+<!-- AUTO-GENERATED-CONTENT:END (PACKAGES) -->

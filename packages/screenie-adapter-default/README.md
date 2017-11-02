@@ -1,25 +1,23 @@
-# screenie
+# screenie-adapter-default
 
 [![Build Status](https://travis-ci.org/DSchau/screenie.svg?branch=master)](https://travis-ci.org/DSchau/screenie)
 
-A simple tool to leverage puppeteer to take screenshots of web pages; is particularly tailored to take screenshots of individual slides in a presentation (e.g. within Spectacle)
+An adapter for screenie to take a simple screenshot of a single webpage.
 
 ## Install
 
 ```bash
-yarn add @screenie/screenie
+yarn add @screenie/screenie-cli @screenie/screenie-adapter-default
 ```
 
 ## Usage
 
-```javascript
-const { screenie } = require('@screenie/screenie');
-const path = require('path');
+Can be used globally, but I find it most useful to use in a package.json script, like so:
 
-(async () => {
-  const screenshots = await screenie({
-    folder: path.join(process.cwd(), 'screenshots'),
-    url: 'https://example.com'
-  });
-})();
+```json
+{
+  "scripts": "screenie -a screenie-adapter-default -u https://google.com -d 1000 -f screenshots"
+}
 ```
+
+Will take a screenshot of `https://google.com` using the default adapter, and save the resulting screenshot in the `screeneshots` folder.
