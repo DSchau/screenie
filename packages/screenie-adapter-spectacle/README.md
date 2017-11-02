@@ -23,3 +23,8 @@ Can be used globally, but I find it most useful to use in a package.json script,
 Will take a screenshot of _each_ slide in a spectacle presentation running at `http://localhost:3000`, saving each screenshot in the `screenshots` folder.
 
 Note: slides that use `Appear` will only take a screenshot of the end result *not* each result.
+
+## Example
+
+![example screenshots](./assets/example.png)
+
