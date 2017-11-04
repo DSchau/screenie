@@ -1,0 +1,8 @@
+node_modules
+dist
+screenshots
+src/__tests__/__fixtures__/
+
+*.log
+.DS_Store
+

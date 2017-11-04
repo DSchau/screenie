@@ -1,0 +1,36 @@
+{
+  "name": "@screenie/screenie-adapter-revealjs",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "author": "Dustin Schau <dustinschau@gmail.com> (https://dustinschau.com)",
+  "repository": "https://github.com/DSchau/screenie/tree/master/packages/screenie-adapter-revealjs",
+  "license": "MIT",
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "clean": "del-cli \"dist/**/*\"",
+    "copy": "cp .gitignore .npmignore README.md dist",
+    "predeploy": "npm run build && npm run copy",
+    "deploy": "bump-version",
+    "prepublishOnly": "npm run build",
+    "start": "npm run build && node dist/index.js",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@dschau/bump-version-ci": "~1.0.2",
+    "@types/jest": "~21.1.3",
+    "@types/node": "~8.0.47",
+    "del-cli": "~1.1.0",
+    "jest": "~21.2.1",
+    "jest-preset-typescript": "~1.0.1",
+    "lerna": "^2.4.0",
+    "ts-jest": "~21.1.2",
+    "typescript": "~2.5.3"
+  },
+  "peerDependencies": {
+    "@screenie/screenie": "~0.0.1-16"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
