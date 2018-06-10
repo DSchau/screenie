@@ -1,6 +1,6 @@
 {
   "name": "@screenie/cli",
-  "version": "0.0.1-15",
+  "version": "0.0.1",
   "bin": {
     "screenie": "dist/index.js",
     "screenie-cli": "dist/index.js"
@@ -27,7 +27,7 @@
     "typescript": "~2.5.3"
   },
   "dependencies": {
-    "@screenie/screenie": "~0.0.1-16",
+    "@screenie/screenie": "^0.0.1",
     "chalk": "~2.2.0",
     "commander": "~2.11.0"
   },

@@ -1,6 +1,6 @@
 {
   "name": "@screenie/adapter-revealjs",
-  "version": "0.0.1-0",
+  "version": "0.0.1",
   "main": "dist/index.js",
   "author": "Dustin Schau <dustinschau@gmail.com> (https://dustinschau.com)",
   "repository": "https://github.com/DSchau/screenie/tree/master/packages/adapter-revealjs",
