@@ -26,7 +26,7 @@ const getAdapter = (adapter): Function => {
 }
 
 export async function screenie(opts: ScreenieOptions) {
-  const options = defaults(opts);
+  const options = await defaults(opts);
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 

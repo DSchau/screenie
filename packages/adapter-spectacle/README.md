@@ -1,4 +1,4 @@
-# screenie-adapter-spectacle
+# @screenie/adapter-spectacle
 
 [![Build Status](https://travis-ci.org/DSchau/screenie.svg?branch=master)](https://travis-ci.org/DSchau/screenie)
 
@@ -7,7 +7,7 @@ An adapter to take screenshots of each slide in a spectacle presentation
 ## Install
 
 ```bash
-yarn add @screenie/screenie-cli @screenie/screenie-adapter-spectacle
+yarn add @screenie/screenie-cli @screenie/adapter-spectacle
 ```
 
 ## Usage
@@ -16,7 +16,7 @@ Can be used globally, but I find it most useful to use in a package.json script,
 
 ```json
 {
-  "scripts": "screenie -a screenie-adapter-spectacle -u http://localhost:3000 -d 1000 -f screenshots"
+  "scripts": "screenie -a adapter-spectacle -u http://localhost:3000 -d 1000 -f screenshots"
 }
 ```
 

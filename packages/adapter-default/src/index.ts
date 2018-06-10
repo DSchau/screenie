@@ -16,6 +16,7 @@ export async function screenieAdapterDefault({
 }, options) {
   const screenshotPath = path.join(options.folder, getName(options.url));
   await page.waitFor(options.delay);
+  await Promise.resolve(options.beforeScreenshot(page));
   await page.screenshot({
     path: screenshotPath
   });

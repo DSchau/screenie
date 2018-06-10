@@ -8,15 +8,19 @@ const zeroPad = (num: Number) => {
   return str;
 };
 
-const removeChrome = () => {
-  [
-    document.querySelector('.controls'),
-    document.querySelector('.progress')
-  ]
-    .forEach((el: HTMLElement) => el.remove());
+const removeProgress = () => {
+  const deck = document.querySelector('.spectacle-deck');
+  const progress = Array.from(deck.children).reverse().find(el => {
+    const style = getComputedStyle(el);
+    return style.height === '10px' && style.position === 'absolute';
+  });
+
+  if (progress) {
+    progress.remove();
+  }
 };
 
-export async function screenieAdapterRevealjs({
+export async function screenieAdapterSpectacle({
   browser,
   page
 }, options) {
@@ -24,7 +28,7 @@ export async function screenieAdapterRevealjs({
   let html;
   let hash = '';
   let id = 0;
-  await page.evaluate(removeChrome);
+  await page.evaluate(removeProgress);
   while (true) {
     const updatedHash = await page.evaluate(() => location.href.split('/').pop() || 0);
     const updatedHtml = await page.evaluate(() => document.body.innerHTML);
@@ -40,6 +44,9 @@ export async function screenieAdapterRevealjs({
     const name = `${zeroPad(id)}-${hash}.png`;
     const filePath = path.join(options.folder, name);
     await page.waitFor(options.delay);
+
+    await Promise.resolve(options.beforeScreenshot(page));
+
     const updatedScreenshot = await page.screenshot({
       path: path.join(options.folder, name)
     });

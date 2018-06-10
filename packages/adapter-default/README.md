@@ -1,4 +1,4 @@
-# screenie-adapter-default
+# @screenie/adapter-default
 
 [![Build Status](https://travis-ci.org/DSchau/screenie.svg?branch=master)](https://travis-ci.org/DSchau/screenie)
 
@@ -7,7 +7,7 @@ An adapter for screenie to take a simple screenshot of a single webpage.
 ## Install
 
 ```bash
-yarn add @screenie/screenie-cli @screenie/screenie-adapter-default
+yarn add @screenie/screenie-cli @screenie/adapter-default
 ```
 
 ## Usage
@@ -16,7 +16,7 @@ Can be used globally, but I find it most useful to use in a package.json script,
 
 ```json
 {
-  "scripts": "screenie -a screenie-adapter-default -u https://google.com -d 1000 -f screenshots"
+  "scripts": "screenie -a adapter-default -u https://google.com -d 1000 -f screenshots"
 }
 ```
 

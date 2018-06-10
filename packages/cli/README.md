@@ -1,4 +1,4 @@
-# screenie-cli
+# @screenie/cli
 
 [![Build Status](https://travis-ci.org/DSchau/screenie.svg?branch=master)](https://travis-ci.org/DSchau/screenie)
 
@@ -7,13 +7,13 @@ The CLI (command line interface) to use screenie.
 ## Install
 
 ```bash
-yarn global add @screenie/screenie-cli
+yarn global add @screenie/cli
 ```
 
 or with NPM if that's more your jam
 
 ```bash
-npm install -g @screenie/screenie-cli
+npm install -g @screenie/cli
 ```
 
 ## Usage

@@ -1,16 +1,40 @@
+import * as path from 'path';
+import * as yup from 'yup';
+
 import { ScreenieOptions } from './interfaces';
 
-export const defaults = (...options: ScreenieOptions[]) => {
-  const base = {
-    adapter: 'screenie-adapter-default',
-    delay: 0,
-    height: 450,
-    width: 800,
-    isMobile: true
-  } as ScreenieOptions;
+const schemaBase = yup.object().shape({
+  adapter: yup.string().default('adapter-default').required(),
+  beforeScreenshot: yup.mixed().default(() => () => null),
+  delay: yup.number().default(0).required(),
+  height: yup.number().default(450).required(),
+  width: yup.number().default(800).required(),
+  isMobile: yup.boolean().default(true).required()
+});
 
-  return options.reduce((merged, opts) => ({
+const schema = schemaBase.concat(yup.object().shape({
+  deviceScaleFactor: yup.number(),
+  folder: yup.string().required(),
+  hasTouch: yup.boolean(),
+  isLandscape: yup.boolean(),
+  url: yup.string().url().required()
+}));
+
+const getConfigFile = (fileName = '.screenierc.js') => {
+  try {
+    return require(path.join(process.cwd(), fileName));
+  } catch (e) {
+    return {};
+  }
+};
+
+export const defaults = async (...options: Partial<ScreenieOptions>[]): Promise<ScreenieOptions> => {
+  const base = await schemaBase.validate() as ScreenieOptions;
+
+  const merged = [getConfigFile()].concat(options).reduce((merged, opts) => ({
       ...merged,
       ...opts
     }), base);
+
+  return await schema.validate(merged) as ScreenieOptions;
 };
