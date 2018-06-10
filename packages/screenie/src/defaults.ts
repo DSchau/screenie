@@ -17,7 +17,7 @@ const schema = schemaBase.concat(yup.object().shape({
   folder: yup.string().required(),
   hasTouch: yup.boolean(),
   isLandscape: yup.boolean(),
-  url: yup.string().url().required()
+  url: yup.string().required()
 }));
 
 const getConfigFile = (fileName = '.screenierc.js') => {
@@ -31,7 +31,7 @@ const getConfigFile = (fileName = '.screenierc.js') => {
 export const defaults = async (...options: Partial<ScreenieOptions>[]): Promise<ScreenieOptions> => {
   const base = await schemaBase.validate() as ScreenieOptions;
 
-  const merged = [getConfigFile()].concat(options).reduce((merged, opts) => ({
+  const merged = [].concat(options).concat(getConfigFile()).reduce((merged, opts) => ({
       ...merged,
       ...opts
     }), base);
