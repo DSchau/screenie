@@ -9,13 +9,15 @@ const zeroPad = (num: Number) => {
 };
 
 const removeProgress = () => {
-  const root = document.querySelector('[data-reactroot]');
-  Array.from(root.children)
-    .forEach((child: HTMLElement) => {
-     if (child.style.height === '10px') {
-      child.remove();
-     }
+  const deck = document.querySelector('.spectacle-deck');
+  const progress = Array.from(deck.children).reverse().find(el => {
+    const style = getComputedStyle(el);
+    return style.height === '10px' && style.position === 'absolute';
   });
+
+  if (progress) {
+    progress.remove();
+  }
 };
 
 export async function screenieAdapterSpectacle({
