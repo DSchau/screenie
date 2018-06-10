@@ -16,7 +16,7 @@ const removeChrome = () => {
     .forEach((el: HTMLElement) => el.remove());
 };
 
-export async function screenieAdapterRevealjs({
+export async function adapterRevealjs({
   browser,
   page
 }, options) {

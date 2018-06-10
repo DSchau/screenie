@@ -20,7 +20,7 @@ const removeProgress = () => {
   }
 };
 
-export async function screenieAdapterSpectacle({
+export async function adapterSpectacle({
   browser,
   page
 }, options) {

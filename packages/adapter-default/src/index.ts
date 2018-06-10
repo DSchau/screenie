@@ -10,7 +10,7 @@ const getName = (url, fallbackName = 'screenshot') => {
   return `${name}.png`;
 };
 
-export async function screenieAdapterDefault({
+export async function adapterDefault({
   browser,
   page
 }, options) {
