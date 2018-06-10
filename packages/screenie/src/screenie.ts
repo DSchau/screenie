@@ -26,28 +26,33 @@ const getAdapter = (adapter): Function => {
 }
 
 export async function screenie(opts: ScreenieOptions) {
-  const options = await defaults(opts);
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
+  try {
+    const options = await defaults(opts);
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
 
-  await fs.mkdirp(options.folder);
+    await fs.mkdirp(options.folder);
 
-  await page.goto(options.url, { waitUntil: ['domcontentloaded', 'networkidle0'] });
-  await page.setViewport({
-    height: options.height,
-    width: options.width,
-    isMobile: options.isMobile,
-    landscape: options.isLandscape
-  });
+    await page.goto(options.url, { waitUntil: ['domcontentloaded', 'networkidle0'] });
+    await page.setViewport({
+      height: options.height,
+      width: options.width,
+      isMobile: options.isMobile,
+      landscape: options.isLandscape
+    });
 
-  const adapter = getAdapter(options.adapter);
+    const adapter = getAdapter(options.adapter);
 
-  const screenshots = await adapter({
-    browser,
-    page
-  }, options);
+    const screenshots = await adapter({
+      browser,
+      page
+    }, options);
 
-  await browser.close();
+    await browser.close();
 
-  return screenshots;
+    return screenshots;
+  } catch (e) {
+    console.error(e.stack);
+    throw e;
+  }
 }
